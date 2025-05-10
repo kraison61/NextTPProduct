@@ -3,8 +3,6 @@
 import Hero from "./Hero/Hero";
 import WhyChoose from "./WhyChoose/WhyChoose";
 import Review from "./Reviews/Review";
-import News from "./News/News";
-import Newsletter from "./Newsletter/Newsletter";
 import Slide from "./Slide/Slide";
 import fetchData from "@/data/data";
 

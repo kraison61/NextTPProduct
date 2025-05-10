@@ -17,7 +17,7 @@ const Hero = () => {
       <div className="absolute top-0 left-0 w-full h-full bg-gray-800 opacity-70"></div>
       {/* Video */}
       <video
-        src={`${videoUrl}/images/Tp-02.webm`}
+        src={`${videoUrl}/video/0510.webm`}
         autoPlay
         muted
         loop

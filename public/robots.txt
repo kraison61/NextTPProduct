@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://theeraphong.com
+
+# Sitemaps
+Sitemap: https://theeraphong.com/sitemap.xml

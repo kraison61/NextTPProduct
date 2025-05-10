@@ -81,6 +81,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     kw_top2: firstService.kw_top2,
     kw_con2: firstService.kw_con2,
     kw_img2: firstService.kw_img2,
+    topalt:firstService.topalt,
+    bottomalt:firstService.bottomalt
   };
 
   // 4️⃣ สร้าง carousel item ที่มีข้อมูลเพิ่ม

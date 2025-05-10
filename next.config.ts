@@ -27,6 +27,7 @@ const nextConfig: NextConfig = {
       {
         protocol: 'http',
         hostname: '139.59.105.108',
+        port:'9000',
         pathname: '/theeraphong/**',
       },
     ],

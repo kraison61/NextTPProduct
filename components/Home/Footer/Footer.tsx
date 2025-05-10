@@ -54,7 +54,8 @@ const Footer = ({ targetId }: { targetId: string }) => {
             <div className="w-24 h-24 rounded overflow-hidden bg-gray-100">
               <Image
                 src={`${imgUrl}/image/lineid.webp`}
-                alt="Line QR"
+                // src="http://139.59.105.108:9000/theeraphong/image/lineid.webp"
+                alt="Line QR Code"
                 width={200}
                 height={200}
                 className="object-cover w-full h-full"
