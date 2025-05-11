@@ -63,8 +63,8 @@ const PageBlog = async ({ params }: { params: Promise<{ slug: string }> }) => {
                 <Image
                   src={image.src}
                   alt={image.caption}
-                  fill
-                  objectFit="object-cover"
+                  layout="fill"
+                  objectFit="cover"
                 />
               </div>
               <figcaption className="mt-2 text-sm text-gray-500">
