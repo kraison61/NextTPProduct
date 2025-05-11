@@ -34,6 +34,7 @@ const Hero = () => {
         fill
         sizes="100vw"
         className="object-cover"
+        rel="preload"
       />
     </div>
       {/* Text content */}

@@ -1,7 +1,8 @@
 import { prisma } from "@/lib/prisma";
+import Image from 'next/image';
 
 const PageBlog = async ({ params }: { params: Promise<{ slug: string }> }) => {
-  const {slug} = await params
+  const { slug } = await params;
   const decodedSlug = decodeURIComponent(slug.replace(/-/g, " "));
 
   const blogData = await prisma.blogs.findFirst({
@@ -18,7 +19,7 @@ const PageBlog = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
   const imgUrl = process.env.NEXT_PUBLIC_MINIO_ENDPOINT;
 
-  // จำลอง array รูปและคำบรรยาย (ในกรณีเก็บไว้ใน content เดียวกันแยกด้วย tag หรือ JSON จริงให้ parse แยกก่อน)
+  // จำลอง array รูปและคำบรรยาย
   const images = [
     {
       src: `${imgUrl}/${blogData.image}`,
@@ -33,7 +34,7 @@ const PageBlog = async ({ params }: { params: Promise<{ slug: string }> }) => {
   ];
 
   return (
-    <section className="max-w-6xl mx-auto px-4 py-[20vh] space-y-12">
+    <section className="max-w-6xl mx-auto px-4 py-16 space-y-12">
       {/* หัวข้อ */}
       <div className="text-center">
         <h1
@@ -48,13 +49,31 @@ const PageBlog = async ({ params }: { params: Promise<{ slug: string }> }) => {
         </p>
       </div>
 
-      {/* เนื้อหาให้อยู่ตรงกลางและจัดฟอร์แมต HTML ให้เรียบร้อย */}
-      <div className="flex justify-center">
-        <div
-          className="prose prose-lg text-gray-800"
-          dangerouslySetInnerHTML={{ __html: blogData.content }}
-        />
+      {/* เนื้อหา */}
+      <div className="max-w-3xl mx-auto prose prose-lg text-gray-800">
+        <div dangerouslySetInnerHTML={{ __html: blogData.content }} />
       </div>
+
+      {/* รูปภาพประกอบ */}
+      {images.length > 0 && (
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+          {images.map((image, index) => (
+            <figure key={index}>
+              <div className="relative aspect-w-16 aspect-h-9 overflow-hidden rounded-md shadow-md">
+                <Image
+                  src={image.src}
+                  alt={image.caption}
+                  fill
+                  objectFit="object-cover"
+                />
+              </div>
+              <figcaption className="mt-2 text-sm text-gray-500">
+                {image.caption} - {image.desc}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      )}
 
       {/* CTA */}
       <div className="text-center pt-10">
