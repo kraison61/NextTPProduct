@@ -6372,6 +6372,11 @@ react-multi-carousel@^2.8.5:
     install "^0.13.0"
     npm "^10.1.0"
 
+react-photo-view@^1.2.7:
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/react-photo-view/-/react-photo-view-1.2.7.tgz#7cebfd88f20665ac85de053e9980b492d0f66095"
+  integrity sha512-MfOWVPxuibncRLaycZUNxqYU8D9IA+rbGDDaq6GM8RIoGJal592hEJoRAyRSI7ZxyyJNJTLMUWWL3UIXHJJOpw==
+
 react@19.0.0-rc-66855b96-20241106:
   version "19.0.0-rc-66855b96-20241106"
   resolved "https://registry.yarnpkg.com/react/-/react-19.0.0-rc-66855b96-20241106.tgz#f04d7283454a32bdd8e9757db4308b75b9739e56"
@@ -7935,11 +7940,6 @@ yaml@^2.3.4:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.7.1.tgz#44a247d1b88523855679ac7fa7cda6ed7e135cf6"
   integrity sha512-10ULxpnOCQXxJvBgxsn9ptjq6uviG/htZKk9veJGhlqn3w/DxQ631zFF+nlQXLwmImeS5amR2dl2U8sg6U9jsQ==
-
-yet-another-react-lightbox@^3.23.0:
-  version "3.23.0"
-  resolved "https://registry.yarnpkg.com/yet-another-react-lightbox/-/yet-another-react-lightbox-3.23.0.tgz#4f3673520c75885e5ed127ae6b181f4b954e9ea2"
-  integrity sha512-spSBcHYiNEqvmoZvq53ZyaOUyQeyHXYxgw/X0M8fxTYtC8Cn1Y54UlpR46w16kThROsbc+iox07iiaXUA6ao8Q==
 
 yocto-queue@^0.1.0:
   version "0.1.0"
