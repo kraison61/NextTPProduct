@@ -36,7 +36,7 @@ const Footer = ({ targetId }: { targetId: string }) => {
           <div className="mt-6">
             <h4 className="text-sm text-gray-600">โทร | tel</h4>
             <h5 className="text-base font-bold text-blue-950 mt-1">
-              062-718-8847, 087-700-74563
+              062-718-8847, 087-700-7463
             </h5>
           </div>
           <div className="mt-6 flex items-start justify-between">
