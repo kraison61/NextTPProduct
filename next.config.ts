@@ -5,9 +5,9 @@ const nextConfig: NextConfig = {
     config.watchOptions = {
       ignored: [
         '**/node_modules/**',
-        '**/C:/Users/COJ/Cookies/**', // ✅ บล็อก path นี้
+        '**/C:/Users/COJ/Cookies/**',
         '**/C:/Users/COJ/Application Data/**',
-        '**/C:/Users/COJ/**', // บล็อกทั้งหมดถ้ายังมีปัญหา
+        '**/C:/Users/COJ/**',
       ],
     };
     return config;
@@ -27,7 +27,12 @@ const nextConfig: NextConfig = {
       {
         protocol: 'http',
         hostname: '139.59.105.108',
-        port:'9000',
+        port: '9000',
+        pathname: '/theeraphong/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'minio.speedynetloans.net',
         pathname: '/theeraphong/**',
       },
     ],
