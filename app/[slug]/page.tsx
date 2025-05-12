@@ -104,7 +104,6 @@ export default async function Page({
     <div className="pt-[20vh]">
       <ContentsPage service={contentsData} />
       <div className="pt-[20vh]">
-        <ContentsPage service={contentsData} />
 
         {carouselItems.length > 0 && (
           <div className="pt-20 pb-20 w-[80%] mx-auto" id="imagesId">
@@ -123,8 +122,6 @@ export default async function Page({
 
         <ClientReview />
       </div>
-
-      <ClientReview />
     </div>
   );
 }

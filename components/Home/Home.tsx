@@ -1,11 +1,11 @@
 //Home.tsx
 
-'use client';
+"use client";
 
-import dynamic from 'next/dynamic';
-import Hero from './Hero/Hero';
-import WhyChoose from './WhyChoose/WhyChoose';
-import { CarouselItem } from '@/data/TypeProps';
+import dynamic from "next/dynamic";
+import Hero from "./Hero/Hero";
+import WhyChoose from "./WhyChoose/WhyChoose";
+import { CarouselItem } from "@/data/TypeProps";
 
 type HomeProps = {
   data: {
@@ -16,19 +16,28 @@ type HomeProps = {
 };
 
 // ✅ dynamic import สำหรับ Slide ปกติ (บริการ / blog)
-const Slide = dynamic(() => import('./Slide/Slide'), {
-  loading: () => <div className="h-96 flex items-center justify-center">กำลังโหลด...</div>,
+const Slide = dynamic(() => import("./Slide/Slide"), {
+  loading: () => (
+    <div className="h-96 flex items-center justify-center">กำลังโหลด...</div>
+  ),
 });
 
 // ✅ dynamic import สำหรับ Slide แบบแกลเลอรี่ (รูปภาพ)
-const PhotoGalleryCarousel = dynamic(() => import('./Slide/PhotoGalleryCarousel'), {
-  ssr: false,
-  loading: () => <div>กำลังโหลด...</div>,
-});
+const PhotoGalleryCarousel = dynamic(
+  () => import("./Slide/PhotoGalleryCarousel"),
+  {
+    ssr: false,
+    loading: () => <div>กำลังโหลด...</div>,
+  }
+);
 
 // ✅ dynamic import สำหรับ Review (ซูมรีวิว)
-const Review = dynamic(() => import('./Reviews/Review'), {
-  loading: () => <div className="h-32 flex items-center justify-center">กำลังโหลดรีวิว...</div>,
+const Review = dynamic(() => import("./Reviews/Review"), {
+  loading: () => (
+    <div className="h-32 flex items-center justify-center">
+      กำลังโหลดรีวิว...
+    </div>
+  ),
   ssr: false,
 });
 
@@ -56,11 +65,15 @@ export default function Home({ data }: HomeProps) {
 
       {/* Slide สำหรับรูปภาพ: ใช้ Gallery ซูมได้ */}
       <div className="pt-20 pb-20 w-[80%] mx-auto" id="imagesId">
-        <h2 className="text-center text-3xl font-bold mb-6">ภาพตัวอย่างงานจริง</h2>
+        <h2 className="text-center text-3xl font-bold mb-6">
+          ภาพตัวอย่างงานจริง
+        </h2>
         <p className="text-center text-gray-600 mb-10">
-          รวมภาพผลงานบางส่วนจากโปรเจกต์จริง ที่เรามีโอกาสดูแลและส่งมอบให้กับลูกค้า ด้วยความตั้งใจในทุกรายละเอียด เพื่อให้ทุกชิ้นงานออกมาตรงตามความต้องการและมาตรฐานที่วางไว้
+          รวมภาพผลงานบางส่วนจากโปรเจกต์จริง
+          ที่เรามีโอกาสดูแลและส่งมอบให้กับลูกค้า ด้วยความตั้งใจในทุกรายละเอียด
+          เพื่อให้ทุกชิ้นงานออกมาตรงตามความต้องการและมาตรฐานที่วางไว้
         </p>
-         <PhotoGalleryCarousel itemData={data.dataImage} />
+        <PhotoGalleryCarousel itemData={data.dataImage} />
       </div>
 
       {/* Slide สำหรับบทความ */}
