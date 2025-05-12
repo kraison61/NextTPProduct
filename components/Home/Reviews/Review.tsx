@@ -1,7 +1,6 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
 import ReviewSlider from "./ReviewSlider";
-import fetchData from "@/data/data";
 
 const Review = async () => {
   return (
