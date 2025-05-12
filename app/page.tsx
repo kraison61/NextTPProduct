@@ -1,10 +1,10 @@
-import Home from "@/components/Home/Home";
-import React from "react";
+// ✅ app/page.tsx
+import HomeWrapper from "@/components/Home/HomeWrapper";
 
 const HomePage = () => {
   return (
     <div>
-      <Home />
+      <HomeWrapper />
     </div>
   );
 };

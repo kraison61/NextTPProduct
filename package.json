@@ -8,10 +8,12 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap",
+    "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.802.0",
+    "@next/bundle-analyzer": "^15.3.2",
     "@prisma/client": "^6.7.0",
     "@tailwindcss/typography": "^0.5.16",
     "aos": "^3.0.0-beta.6",
@@ -38,6 +40,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "cross-env": "^7.0.3",
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
     "gnpm": "^0.0.8",
