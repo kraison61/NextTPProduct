@@ -37,7 +37,7 @@ const Nav = ({ openNav }: Props) => {
     <div
       className={` ${
         navBg ? "bg-blue-950 shadow-md" : "fixed"
-      } transition-all duration-200 h-[15vh] z-[1000] fixed w-full`}
+      } transition-all duration-200 z-[1000] fixed w-full`}
     >
       <div className="flex items-center h-full justify-between w-[90%] xl:w-[80%] mx-auto">
         {/* LOGO */}
