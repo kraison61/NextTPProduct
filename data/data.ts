@@ -9,7 +9,7 @@ export const reviewData = [
     review:
       "งานเทพื้นคอนกรีตที่ลานโรงงานเรียบร้อยมากครับ มีระบบระบายน้ำครบถ้วน ทีมงานดูแลทุกขั้นตอน ไม่ทิ้งงาน ทำงานตรงเวลา",
     image: "/images/user.png",
-    job:"N/A",
+    job: "N/A",
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ export const reviewData = [
     review:
       "ก่อสร้างกำแพงกันดินออกมาได้แข็งแรง สวยงามเกินคาดเลยค่ะ ทีมงานมีความรู้และช่วยให้คำแนะนำเรื่องโครงสร้างดีมาก ประทับใจค่ะ",
     image: "/images/user.png",
-    job:"N/A",
+    job: "N/A",
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ export const reviewData = [
     review:
       "เลือกใช้บริการเพราะเห็นว่ามีประสบการณ์ตรง พอได้ทำจริง งานเรียบร้อยครับ ทีมงานใจเย็น ตอบทุกคำถาม และวัสดุที่ใช้ดีมาก",
     image: "/images/user.png",
-    job:"N/A",
+    job: "N/A",
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ export const reviewData = [
     review:
       "ถมดินแล้วแน่นหนาดีมากเลยค่ะ เคยเจอที่อื่นทำแล้วทรุดง่าย แต่ของที่นี่จัดการให้ครบทุกขั้นตอน พร้อมแนะนำวิธีดูแลพื้นที่หลังถมดินด้วย",
     image: "/images/user.png",
-    job:"N/A",
+    job: "N/A",
   },
   {
     id: 5,
@@ -41,7 +41,7 @@ export const reviewData = [
     review:
       "ขอบคุณธีรพงษ์เซอร์วิสมากครับ งานเทพื้นคอนกรีตได้มาตรฐานดีเยี่ยม รถขับเข้าออกสบาย ทีมงานสุภาพและมืออาชีพมากครับ",
     image: "/images/user.png",
-    job:"N/A",
+    job: "N/A",
   },
   {
     id: 6,
@@ -49,7 +49,7 @@ export const reviewData = [
     review:
       "ประทับใจตั้งแต่ขั้นตอนเสนอราคา ให้ข้อมูลละเอียด วัสดุที่ใช้คุณภาพดีมากค่ะ งานรั้วเรียบร้อย สวยงาม ปลอดภัย และตรงเวลาค่ะ",
     image: "/images/user.png",
-    job:"N/A",
+    job: "N/A",
   },
   {
     id: 7,
@@ -57,7 +57,7 @@ export const reviewData = [
     review:
       "ตั้งแต่เริ่มคุยงานจนเสร็จ รู้สึกสบายใจครับ ทีมงานมีความรับผิดชอบสูง ไม่ทิ้งงาน วางแผนงานดี ส่งมอบตรงเวลา ราคายุติธรรม",
     image: "/images/user.png",
-    job:"N/A",
+    job: "N/A",
   },
   {
     id: 8,
@@ -65,7 +65,7 @@ export const reviewData = [
     review:
       "ทำงานเรียบร้อย เก็บรายละเอียดดีมากค่ะ ไม่ต้องตามงานเลย มีการอัปเดตความคืบหน้าให้ตลอด ประทับใจในบริการค่ะ",
     image: "/images/user.png",
-    job:"N/A",
+    job: "N/A",
   },
 ];
 
@@ -206,7 +206,6 @@ export const toursData = [
   },
 ];
 
-
 //app/data/data.ts
 const fetchData = async () => {
   const rawServices = await prisma.services.findMany({
@@ -215,12 +214,12 @@ const fetchData = async () => {
       kw_img1: true,
       kw_title: true,
       kw_des: true,
-      serviceName:{
-        select:{
-          serviceLink:true,
-          serviceName:true
-        }
-      }
+      serviceName: {
+        select: {
+          serviceLink: true,
+          serviceName: true,
+        },
+      },
     },
     orderBy: {
       created_at: "desc",
@@ -241,25 +240,37 @@ const fetchData = async () => {
   });
 
   const rawImages = await prisma.image_uploads.findMany({
-    orderBy:{
+    include: {
+      service: {
+        select: {
+          serviceName: true,
+          serviceLink: true,
+        },
+      },
+    },
+    orderBy: {
       created_at: "desc",
-    }
+    },
   });
-  
 
   const dataImage: CarouselItem[] = rawImages.map((image) => {
     return {
       id: image.id.toString(),
       image: image.img_url,
       title: image.location,
-      description: image.worked_date,
+      description: image.worked_date?.toString() ?? "",
+      workedDate: image.worked_date ?? undefined,
+      serviceName: {
+        serviceLink: image.service?.serviceLink ?? "#",
+        serviceName: image.service?.serviceName ?? "ไม่ระบุบริการ",
+      },
     };
   });
 
   const rawBlog = await prisma.blogs.findMany({
-    orderBy:{
+    orderBy: {
       created_at: "desc",
-    }
+    },
   });
   const dataBlog: CarouselItem[] = rawBlog.map((blog) => {
     return {

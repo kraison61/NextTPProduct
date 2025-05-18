@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 const imgUrl = process.env.NEXT_PUBLIC_MINIO_ENDPOINT
+const bucketName = process.env.NEXT_PUBLIC_MINIO_BUCKET;
 
 // either Static metadata
 export const metadata: Metadata = {
@@ -65,7 +66,7 @@ const pageAbout = () => {
             </div>
             <div className="w-full md:w-1/2 overflow-hidden rounded-2xl shadow-lg">
               <Image
-                src={`${imgUrl}/image/ruk-01.webp`}
+                src={`${imgUrl}/${bucketName}/about/194914_0.jpg`}
                 alt="ภาพประกอบบริการ"
                 width={800}
                 height={500}
@@ -78,7 +79,7 @@ const pageAbout = () => {
           <section className="flex flex-col-reverse md:flex-row items-center gap-4">
             <div className="w-full md:w-1/2 overflow-hidden rounded-2xl shadow-lg">
               <Image
-                src={`${imgUrl}/image/ruk-02.webp`}
+                src={`${imgUrl}/${bucketName}/about/194911_0.jpg`}
                 alt="ภาพประกอบบริการ"
                 width={800}
                 height={500}

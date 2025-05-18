@@ -4,6 +4,7 @@ export interface CarouselItem {
   image: string;
   title: string;
   description: string | Date;
+  workedDate?: string | Date | null | undefined;
   serviceName?: {
     serviceLink: string;
     serviceName: string;
