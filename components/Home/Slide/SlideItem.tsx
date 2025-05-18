@@ -11,6 +11,7 @@ import "react-photo-view/dist/react-photo-view.css";
 
 const imageUrl = process.env.NEXT_PUBLIC_MINIO_ENDPOINT;
 const fallbackImage = "/images/n1.jpg";
+const bucketName = process.env.NEXT_PUBLIC_MINIO_BUCKET;
 
 // responsive setting สำหรับ slide
 const responsive = {
@@ -46,7 +47,7 @@ const SlideItem = ({ itemData, pageType }: SlideItemProps) => {
   return (
     <Carousel responsive={responsive} infinite autoPlay autoPlaySpeed={5000} keyBoardControl>
       {itemData.map((data, index) => {
-        const imageSrc = `${imageUrl}/${data.image}`;
+        const imageSrc = `${imageUrl}/${bucketName}/${data.image}`;
         const isImage = pageType === "image";
 
         let href = "#";
@@ -57,6 +58,8 @@ const SlideItem = ({ itemData, pageType }: SlideItemProps) => {
         } else if (pageType === "image") {
           href = `/image/${data.id}`;
         }
+
+      console.log("imageSrc", imageSrc);
 
         return (
           <div key={data.id} className="m-3">

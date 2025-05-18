@@ -1,3 +1,5 @@
+// lib/s3.ts
+
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 
 export const s3 = new S3Client({
@@ -14,13 +16,15 @@ export async function uploadToS3({
   fileBuffer,
   fileName,
   contentType,
+  bucket,
 }: {
   fileBuffer: Buffer;
   fileName: string;
   contentType: string;
+  bucket: string;
 }) {
   const command = new PutObjectCommand({
-    Bucket: 'my-bucket',
+    Bucket: bucket,
     Key: fileName,
     Body: fileBuffer,
     ContentType: contentType || 'application/octet-stream',

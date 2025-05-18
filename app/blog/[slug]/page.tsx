@@ -1,5 +1,22 @@
 import { prisma } from "@/lib/prisma";
-import Image from 'next/image';
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) => {
+  const { slug } = await params;
+  const decodedSlug = decodeURIComponent(slug.replace(/-/g, " "));
+  const blogData = await prisma.blogs.findFirst({
+    where: {
+      title: decodedSlug,
+    },
+  });
+  return {
+    title: blogData?.title || "บริการไม่พบ",
+    description: blogData?.description || "ไม่มีคำอธิบายสำหรับบริการนี้",
+  };
+};
 
 const PageBlog = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
@@ -17,24 +34,10 @@ const PageBlog = async ({ params }: { params: Promise<{ slug: string }> }) => {
     );
   }
 
-  const imgUrl = process.env.NEXT_PUBLIC_MINIO_ENDPOINT;
-
-  // จำลอง array รูปและคำบรรยาย
-  const images = [
-    {
-      src: `${imgUrl}/${blogData.image}`,
-      caption: "รูป: เสาเข็มตอกโดยเครื่องจักร",
-      desc: "การดำเนินการอาจมีความล่าช้าเนื่องจากสภาพอากาศและความชื้นในพื้นที่",
-    },
-    {
-      src: `${imgUrl}/another-image.jpg`,
-      caption: "รูป: ปรับฐานเสาเข็ม",
-      desc: "เพื่อให้เสาเข็มยึดเกาะได้ดีในสภาพดินอ่อน ต้องวางแนวเรียงให้ถูกต้อง",
-    },
-  ];
+  
 
   return (
-    <section className="max-w-6xl mx-auto px-4 py-16 space-y-12">
+    <section className="max-w-6xl mx-auto px-4 pt-[30vh] space-y-12">
       {/* หัวข้อ */}
       <div className="text-center">
         <h1
@@ -53,27 +56,6 @@ const PageBlog = async ({ params }: { params: Promise<{ slug: string }> }) => {
       <div className="max-w-3xl mx-auto prose prose-lg text-gray-800">
         <div dangerouslySetInnerHTML={{ __html: blogData.content }} />
       </div>
-
-      {/* รูปภาพประกอบ */}
-      {images.length > 0 && (
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
-          {images.map((image, index) => (
-            <figure key={index}>
-              <div className="relative aspect-w-16 aspect-h-9 overflow-hidden rounded-md shadow-md">
-                <Image
-                  src={image.src}
-                  alt={image.caption}
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </div>
-              <figcaption className="mt-2 text-sm text-gray-500">
-                {image.caption} - {image.desc}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      )}
 
       {/* CTA */}
       <div className="text-center pt-10">

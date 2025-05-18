@@ -2,7 +2,7 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 import ReviewSlider from "./ReviewSlider";
 
-const Review = async () => {
+const Review = () => {
   return (
     <div className="pt-20 pb-20 flex items-center justify-center flex-col bg-[#13357b]">
       <div className="w-[80%] mx-auto grid items-center grid-cols-1 lg:grid-cols-2 gap-10">

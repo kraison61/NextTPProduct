@@ -1,14 +1,12 @@
 //app/[slug]/page.tsx
 import ContentsPage from "@/components/BlogComponent/Contents";
-import Slide from "@/components/Home/Slide/Slide";
 import { prisma } from "@/lib/prisma";
 import { CarouselItem } from "@/data/TypeProps";
 import ClientReview from "@/components/Home/Reviews/ClientReview";
 import PhotoGalleryCarousel from "@/components/Home/Slide/PhotoGalleryCarousel"; // เพิ่ม import ถ้ายังไม่มี
 
-
-
 export async function generateStaticParams() {
+  
   const servicePages = await prisma.service_names.findMany();
 
   return servicePages.map((service) => ({

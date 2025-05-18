@@ -22,23 +22,23 @@ const nextConfig: NextConfig = {
       {
         protocol: 'http',
         hostname: '192.168.220.253',
-        pathname: '/theeraphong/**',
+        pathname: '/**',
       },
       {
         protocol: 'http',
         hostname: 'kraison.thddns.net',
-        pathname: '/theeraphong/**',
+        pathname: '/**',
       },
       {
         protocol: 'http',
         hostname: '139.59.105.108',
         port: '9000',
-        pathname: '/theeraphong/**',
+        pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: 'minio.speedynetloans.net',
-        pathname: '/theeraphong/**',
+        pathname: '/**',
       },
     ],
   },

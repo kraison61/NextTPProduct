@@ -53,8 +53,8 @@ model image_uploads {
   serviceId     BigInt        @map("service_id")
   service       service_names @relation("ImageToServiceName", fields: [serviceId], references: [id]) // ✅ ใช้อันเดียวพอ
   img_url       String        @db.VarChar(255)
-  created_at    DateTime?     @db.Timestamp(0)
-  updated_at    DateTime?     @db.Timestamp(0)
+  created_at    DateTime?     @default(now()) @db.Timestamp(0)
+  updated_at    DateTime?     @updatedAt @db.Timestamp(0)
   location      String        @db.VarChar(255)
   worked_date   DateTime      @db.Date
 }
@@ -66,16 +66,16 @@ model blogs {
   content        String        @db.LongText
   image          String        @db.VarChar(255)
   servicename_id BigInt
-  created_at     DateTime?     @db.Timestamp(0)
-  updated_at     DateTime?     @db.Timestamp(0)
+  created_at     DateTime?     @default(now()) @db.Timestamp(0)
+  updated_at     DateTime?     @updatedAt @db.Timestamp(0)
   serviceName    service_names @relation(fields: [servicename_id], references: [id])
 }
 
 model service_names {
   id            BigInt          @id @default(autoincrement()) @db.UnsignedBigInt
   serviceName   String          @unique @map("service_name") @db.VarChar(255)
-  created_at    DateTime?       @db.Timestamp(0)
-  updated_at    DateTime?       @db.Timestamp(0)
+  created_at    DateTime?       @default(now()) @db.Timestamp(0)
+  updated_at    DateTime?       @updatedAt @db.Timestamp(0)
   serviceLink   String          @unique @map("service_link") @db.VarChar(255)
   services      services[]
   blogs         blogs[]
@@ -94,8 +94,8 @@ model services {
   kw_con2       String          @db.LongText
   kw_img1       String          @db.VarChar(255)
   kw_img2       String          @db.VarChar(255)
-  created_at    DateTime?       @db.Timestamp(0)
-  updated_at    DateTime?       @db.Timestamp(0)
+  created_at    DateTime?       @default(now()) @db.Timestamp(0)
+  updated_at    DateTime?       @updatedAt @db.Timestamp(0)
   topalt        String?         @db.VarChar(255)
   bottomalt     String?         @db.VarChar(255)
   serviceName   service_names   @relation(fields: [serviceId], references: [id])

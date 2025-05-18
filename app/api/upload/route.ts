@@ -1,27 +1,12 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { uploadToS3 } from '@/lib/s3';
+// app/api/upload/route.ts
+import { NextRequest, NextResponse } from "next/server";
+import { uploadFileToMinIO } from "@/lib/upload";
 
 export async function POST(req: NextRequest) {
   const formData = await req.formData();
-  const file = formData.get('file') as File;
+  const files = formData.getAll("images") as File[];
 
-  if (!file) {
-    return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
-  }
+  const urls = await Promise.all(files.map(uploadFileToMinIO));
 
-  try {
-    const arrayBuffer = await file.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-
-    await uploadToS3({
-      fileBuffer: buffer,
-      fileName: file.name,
-      contentType: file.type,
-    });
-
-    return NextResponse.json({ message: 'Upload successful' });
-  } catch (err) {
-    console.error(err);
-    return NextResponse.json({ error: 'Upload failed' }, { status: 500 });
-  }
+  return NextResponse.json({ urls });
 }

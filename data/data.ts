@@ -240,7 +240,12 @@ const fetchData = async () => {
     };
   });
 
-  const rawImages = await prisma.image_uploads.findMany({});
+  const rawImages = await prisma.image_uploads.findMany({
+    orderBy:{
+      created_at: "desc",
+    }
+  });
+  
 
   const dataImage: CarouselItem[] = rawImages.map((image) => {
     return {
@@ -251,7 +256,11 @@ const fetchData = async () => {
     };
   });
 
-  const rawBlog = await prisma.blogs.findMany();
+  const rawBlog = await prisma.blogs.findMany({
+    orderBy:{
+      created_at: "desc",
+    }
+  });
   const dataBlog: CarouselItem[] = rawBlog.map((blog) => {
     return {
       id: blog.id.toString(),

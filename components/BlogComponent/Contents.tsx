@@ -21,6 +21,7 @@ interface ContentsPageProps {
 }
 
 const imgUrl = process.env.NEXT_PUBLIC_MINIO_ENDPOINT;
+const bucketName = process.env.NEXT_PUBLIC_MINIO_BUCKET;
 const ContentsPage = ({ service }: ContentsPageProps) => {
   return (
     <div className="p-4">
@@ -35,7 +36,7 @@ const ContentsPage = ({ service }: ContentsPageProps) => {
         <div className="w-full flex flex-col md:flex-row gap-6 items-start">
           <figure className="mb-4 md:mb-0 rounded-lg shadow-md overflow-hidden w-full md:w-[400px]">
             <Image
-              src={`${imgUrl}/${service.kw_img1 || "images/n1.jpg"}`}
+              src={`${imgUrl}/${bucketName}/${service.kw_img1 || "images/n1.jpg"}`}
               alt="ภาพประกอบบริการ"
               width={400}
               height={300}
@@ -63,7 +64,7 @@ const ContentsPage = ({ service }: ContentsPageProps) => {
         <div className="w-full flex flex-col gap-6 items-start md:flex-row-reverse">
           <figure className="mb-4 md:mb-0 rounded-lg shadow-md overflow-hidden w-full md:w-[400px]">
             <Image
-              src={`${imgUrl}/${service.kw_img2 || "images/n2.jpg"}`}
+              src={`${imgUrl}/${bucketName}/${service.kw_img2 || "images/n2.jpg"}`}
               alt="ภาพประกอบบริการ"
               width={400}
               height={300}

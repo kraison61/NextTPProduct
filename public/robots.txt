@@ -2,6 +2,18 @@
 User-agent: *
 Allow: /
 
+# *
+User-agent: *
+Disallow: /admin
+
+# *
+User-agent: *
+Disallow: /admin/*
+
+# *
+User-agent: *
+Disallow: /api/*
+
 # Host
 Host: https://theeraphong.com
 
