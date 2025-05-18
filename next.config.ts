@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
     };
     return config;
   },
+  
   images: {
     remotePatterns: [
       {
@@ -41,6 +42,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
+    unoptimized: true,
   },
 };
 
