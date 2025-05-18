@@ -72,6 +72,9 @@ export default async function Page({
       location: true,
       worked_date: true,
     },
+    orderBy: {
+      created_at: "desc", // เรียงตามวันที่สร้างล่าสุด
+    },
   });
 
   // 3️⃣ สร้าง contentsData สำหรับเนื้อหา (optional ใช้บริการแรก)
