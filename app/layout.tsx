@@ -9,6 +9,7 @@ import ScrollToTop from "@/components/Helper/ScrollToTop";
 const font = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
+  display:'swap'
 });
 
 export const metadata: Metadata = {
