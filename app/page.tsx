@@ -1,4 +1,5 @@
 // ✅ app/page.tsx
+export const revalidate = 60;
 import HomeWrapper from "@/components/Home/HomeWrapper";
 
 
