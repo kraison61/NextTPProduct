@@ -82,7 +82,7 @@ const Footer = ({ targetId }: { targetId: string }) => {
       <div className="mt-8 w-[80%] mx-auto border-t pt-8 flex flex-col md:flex-row justify-between items-center text-gray-600 text-sm">
         <p className="text-center md:text-left">
           © 2025 บริษัท ธีรพงษ์เซอร์วิส จำกัด | Theeraphong Co., Ltd. | โทร.
-          062-718-8847 | Line: @theeraphongservice. All rights reserved
+          062-718-8847 | Line: thee_sa. All rights reserved
         </p>
         <div className="flex items-center space-x-4 mt-4 md:mt-0">
           <span>Social : </span>
