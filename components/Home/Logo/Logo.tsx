@@ -5,7 +5,7 @@ const Logo = () => {
     <div className="flex flex-col items-center">
       <div className="w-32 sm:w-40 md:w-48 lg:w-56 xl:w-64">
         <Image
-          src="/Logo1.png"
+          src="/Logo1.webp"
           alt="ธีรพงษ์เซอร์วิส-Logo"
           width={300} // ยังต้องระบุ เพื่อ Next.js จัดการ image optimization
           height={300}
